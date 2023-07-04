@@ -14,7 +14,7 @@ void main() async {
   runApp(const AuthenticationApp());
 }
 
-class AuthenticationApp extends StatelessWidget {
+class AuthenticationApp extends StatelessWidget{
   const AuthenticationApp({super.key});
 
   @override
@@ -26,11 +26,11 @@ class AuthenticationApp extends StatelessWidget {
       getPages: PageConfig.pages,
     );
   }
+
 }
 
 Future<void> _checkLoggedUser(storageService, authController) async {
-  final String? data = await storageService.storage.read(key: 'useremail');
+  final String? data = await storageService.storage.read(key: 'user');
   authController.authenticated = data != null;
-  authController.useremail = data ?? "";
-  authController.userpassword = data ?? "";
+  authController.username = data ?? "";
 }
