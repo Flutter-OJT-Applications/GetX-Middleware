@@ -1,12 +1,16 @@
 import 'package:authentications/screens/configs/page_config.dart';
 import 'package:authentications/services/auth/auth_service.dart';
+import 'package:authentications/services/configs/entiry_service.dart';
 import 'package:authentications/services/configs/initial_binding.dart';
 import 'package:authentications/services/prefs/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+final entityService = EntityService();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await entityService.initialize();
   final StorageService storageService = Get.put(StorageService());
   final AuthService authController = Get.put(AuthService());
   await _checkLoggedUser(storageService, authController);
@@ -26,7 +30,6 @@ class AuthenticationApp extends StatelessWidget{
       getPages: PageConfig.pages,
     );
   }
-
 }
 
 Future<void> _checkLoggedUser(storageService, authController) async {
