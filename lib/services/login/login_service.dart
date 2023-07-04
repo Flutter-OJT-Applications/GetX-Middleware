@@ -9,5 +9,5 @@ class LoginService extends GetxController {
     super.onInit();
   }
 
-  AuthService get authController => Get.find<AuthService>();
+  AuthService get authService => Get.find<AuthService>();
 }

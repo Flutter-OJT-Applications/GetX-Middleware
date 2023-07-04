@@ -1,14 +1,13 @@
-import 'package:authentications/services/login/login_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../services/auth/auth_service.dart';
 
 class GlobalMiddleware extends GetMiddleware {
-  final authController = Get.find<AuthService>();
+  final authService = Get.find<AuthService>();
 
   @override
   RouteSettings? redirect(String? route) {
-    return authController.authenticated || route == '/login'
+    return authService.authenticated || route == '/login'
         ? null
         : const RouteSettings(name: '/login');
   }

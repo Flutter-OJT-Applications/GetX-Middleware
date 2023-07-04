@@ -15,10 +15,10 @@ class LoginScreen extends GetView<LoginService> {
         child: ElevatedButton(
           child: const Text('Login'),
           onPressed: () async {
-            controller.authController.authenticated = true;
+            controller.authService.authenticated = true;
             String name = "Mg Mg";
             await storageService.storage.write(key: 'user', value: name);
-            controller.authController.username = name;
+            controller.authService.username = name;
             Get.offNamed('/home');
           },
         ),

@@ -5,8 +5,6 @@ import 'package:authentications/services/home/home_service.dart';
 import 'package:authentications/services/login/login_service.dart';
 import 'package:get/get.dart';
 
-import '../../services/auth/auth_service.dart';
-
 class PageConfig {
   static final List<GetPage> pages = [
     GetPage(
