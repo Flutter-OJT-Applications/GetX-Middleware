@@ -15,11 +15,13 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('User: ${authController.username}'),
-            ElevatedButton(onPressed: () async{
-              await authController.logout();
-              Get.offNamed('/login');
-            }, child: const Text('Logout'))
+            Text('UserEmail: ${authController.useremail}'),
+            ElevatedButton(
+                onPressed: () async {
+                  await authController.logout();
+                  Get.offNamed('/login');
+                },
+                child: const Text('Logout'))
           ],
         ),
       ),

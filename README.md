@@ -1,6 +1,6 @@
 # authentications
 
-A new Flutter project.
+A Flutter project GetX-Middlewate.
 
 ## Getting Started
 

@@ -17,7 +17,7 @@ class PageConfig {
     ),
     GetPage(
       name: '/login',
-      page: () => const LoginScreen(),
+      page: () => LoginScreen(),
       binding: BindingsBuilder(() {
         Get.put(LoginService());
       }),
