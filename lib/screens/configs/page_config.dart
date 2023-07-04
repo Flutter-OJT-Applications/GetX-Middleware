@@ -9,11 +9,11 @@ class PageConfig {
   static final List<GetPage> pages = [
     GetPage(
       name: '/home',
-      page: () => const HomeScreen(), // last
+      page: () => const HomeScreen(),
       binding: BindingsBuilder(() {
-        HomeService(); // second
+        HomeService();
       }),
-      middlewares: [GlobalMiddleware()], // first
+      middlewares: [GlobalMiddleware()],
     ),
     GetPage(
       name: '/login',
