@@ -1,5 +1,10 @@
+import 'dart:convert';
+
+import 'package:authentications/models/user/user_model.dart';
+import 'package:authentications/screens/commons/common_widget.dart';
 import 'package:authentications/screens/configs/page_config.dart';
 import 'package:authentications/services/auth/auth_service.dart';
+import 'package:authentications/services/configs/entity_service.dart';
 import 'package:authentications/services/configs/initial_binding.dart';
 import 'package:authentications/services/prefs/storage_service.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +12,10 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Get.put(EntityService());
   final StorageService storageService = Get.put(StorageService());
-  final AuthService authController = Get.put(AuthService());
-  await _checkLoggedUser(storageService, authController);
+  final AuthService authService = Get.put(AuthService());
+  await _checkLoggedUser(storageService, authService);
 
   runApp(const AuthenticationApp());
 }
@@ -24,13 +30,17 @@ class AuthenticationApp extends StatelessWidget{
       initialBinding: InitialBinding(),
       initialRoute: '/home',
       getPages: PageConfig.pages,
+      theme: CommonWidget.lightTheme,
     );
   }
-
 }
 
-Future<void> _checkLoggedUser(storageService, authController) async {
+Future<void> _checkLoggedUser(StorageService storageService, AuthService authController) async {
   final String? data = await storageService.storage.read(key: 'user');
   authController.authenticated = data != null;
   authController.username = data ?? "";
+  if(data != null) {
+    authController.principal = UserModel.fromJson(jsonDecode(data));
+  }
+
 }

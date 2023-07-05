@@ -9,13 +9,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final authController = Get.find<AuthService>();
     return Scaffold(
-      appBar: AppBar(title: const Text('HOME')),
+      appBar: AppBar(title: Text('${authController.principal.name}')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('User: ${authController.username}'),
+            Text('User: ${authController.principal.toString()}'),
             ElevatedButton(onPressed: () async{
               await authController.logout();
               Get.offNamed('/login');

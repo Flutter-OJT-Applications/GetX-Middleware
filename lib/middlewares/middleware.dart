@@ -7,28 +7,9 @@ class GlobalMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    return authService.authenticated || route == '/login'
+    return authService.authenticated || route == '/login' || route == '/sign-up'
         ? null
         : const RouteSettings(name: '/login');
   }
-  //
-  // @override
-  // GetPage? onPageCalled(GetPage? page) {
-  //   print('>>> Page ${page!.name} called');
-  //   print('>>> User ${authController.username} logged');
-  //   return page;
-  // }
-  //
-  // @override
-  // GetPageBuilder? onPageBuildStart(GetPageBuilder? page) {
-  //   print('Bindings of ${page.toString()} are ready');
-  //   return page;
-  // }
-  //
-  // @override
-  // Widget onPageBuilt(Widget page) {
-  //   print('Widget ${page.toStringShort()} will be showed');
-  //   return page;
-  // }
 
 }
