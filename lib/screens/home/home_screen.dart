@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('User: ${authController.principal.toString()}'),
+            Text(authController.isAdmin ? 'This is admin Home Page.':'This is user Home Page.'),
             ElevatedButton(onPressed: () async{
               await authController.logout();
               Get.offNamed('/login');

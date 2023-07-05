@@ -21,6 +21,8 @@ class AuthService extends GetxController {
     _username.value = "";
   }
 
+  bool get isAdmin => principal.roleId == 1;
+
   bool get authenticated => _authenticated.value;
   set authenticated(bool value) => _authenticated.value = value;
   String get username => _username.value;
