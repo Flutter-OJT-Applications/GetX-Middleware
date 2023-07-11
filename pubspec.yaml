@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   flutter_secure_storage: ^8.0.0
+  crypto: ^3.0.3
+  sqflite: ^2.2.8+4
+  path: ^1.8.3
+  logger: ^1.4.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

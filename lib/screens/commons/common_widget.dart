@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 
+import '../../models/todo/todo_model.dart';
+
+typedef FormSubmitCallback = Function(TodoModel model);
+typedef TodoTileCallback = Function(int id);
+
 class CommonWidget{
   static MaterialColor appColors = const MaterialColor(
-    0xff6a1b9a, // Set the primary color to a violet shade
+    0xff1976d2, // Set the primary color to a classic blue shade
     <int, Color>{
-      50: Color(0xfff3e5f5),
-      100: Color(0xffe1bee7),
-      200: Color(0xffce93d8),
-      300: Color(0xffba68c8),
-      400: Color(0xffab47bc),
-      500: Color(0xff9c27b0), // Adjusted to a violet shade
-      600: Color(0xff8e24aa),
-      700: Color(0xff7b1fa2),
-      800: Color(0xff6a1b9a), // Adjusted to a violet shade
-      900: Color(0xff4a148c),
+      50: Color(0xffe3f2fd),
+      100: Color(0xffbbdefb),
+      200: Color(0xff90caf9),
+      300: Color(0xff64b5f6),
+      400: Color(0xff42a5f5),
+      500: Color(0xff2196f3), // Main classic blue shade
+      600: Color(0xff1e88e5),
+      700: Color(0xff1976d2),
+      800: Color(0xff1565c0),
+      900: Color(0xff0d47a1),
     },
   );
 
   static final ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.purple,
+    primaryColor: appColors,
     // Set the primary color to violet
     colorScheme: ColorScheme.fromSwatch(primarySwatch: CommonWidget.appColors),
     textTheme: TextTheme(
@@ -112,6 +117,6 @@ class CommonWidget{
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: color);
 
   static TextStyle secondaryTitleText({Color? color}) =>
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: color);
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: color);
 
 }
