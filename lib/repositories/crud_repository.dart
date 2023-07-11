@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class CRUDRepository<E>{
-  Future<List<E>?>  list();
+  Future<List<E>?>  list({String? where, List<Object?>? whereArgs});
   Future<E?> getById(id);
   Future<int?> create(E data);
   Future<int?> update(id,E data);

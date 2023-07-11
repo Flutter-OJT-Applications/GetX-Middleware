@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../models/todo/todo_model.dart';
+
+typedef FormSubmitCallback = Function(TodoModel model);
+typedef TodoTileCallback = Function(int id);
+
 class CommonWidget{
   static MaterialColor appColors = const MaterialColor(
     0xff6a1b9a, // Set the primary color to a violet shade
@@ -112,6 +117,6 @@ class CommonWidget{
       TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: color);
 
   static TextStyle secondaryTitleText({Color? color}) =>
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: color);
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: color);
 
 }

@@ -17,7 +17,7 @@ class EntityService extends GetxController{
 
   Future<void> initialize() async {
     var databasePath = await getDatabasesPath();
-    String path = join(databasePath, 'myDb.db');
+    String path = join(databasePath, 'assignment_05.db');
     _database = await openDatabase(path, version: 1, onCreate: _onDbCreate); //
   }
 
@@ -71,6 +71,20 @@ class EntityService extends GetxController{
       'role_id': 1,
     });
     logger.i('Admin user has been added.\n');
+    logger.i('Creating todo table...');
+    await db.execute(
+        '''
+        CREATE TABLE IF NOT EXISTS todo (
+          id INTEGER PRIMARY KEY, 
+          user_id INTEGER,
+          title VARCHAR(50), 
+          description TEXT, 
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+          FOREIGN KEY (user_id) REFERENCES `user` (id)
+        )
+        ''');
+    logger.i('Todo table is created.');
   }
   Database get database => _database;
 }

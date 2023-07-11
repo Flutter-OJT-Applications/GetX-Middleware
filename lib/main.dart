@@ -7,14 +7,17 @@ import 'package:authentications/services/auth/auth_service.dart';
 import 'package:authentications/services/configs/entity_service.dart';
 import 'package:authentications/services/configs/initial_binding.dart';
 import 'package:authentications/services/prefs/storage_service.dart';
+import 'package:authentications/services/user/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put(EntityService());
+  final entityService = Get.put(EntityService());
+  await entityService.initialize();
   final StorageService storageService = Get.put(StorageService());
   final AuthService authService = Get.put(AuthService());
+  Get.put(UserService());
   await _checkLoggedUser(storageService, authService);
 
   runApp(const AuthenticationApp());
@@ -42,5 +45,7 @@ Future<void> _checkLoggedUser(StorageService storageService, AuthService authCon
   if(data != null) {
     authController.principal = UserModel.fromJson(jsonDecode(data));
   }
+  //
+
 
 }

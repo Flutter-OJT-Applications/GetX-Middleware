@@ -29,8 +29,8 @@ class UserRepository extends CRUDRepository<UserModel>{
   }
 
   @override
-  Future<List<UserModel>?> list() async{
-    final data = await database.query('user');
+  Future<List<UserModel>?> list({String? where, List<Object?>? whereArgs}) async{
+    final data = await database.query('user', where: where, whereArgs: whereArgs);
     return data.map((user) => UserModel.fromJson(user)).toList();
   }
 
